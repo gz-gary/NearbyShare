@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.example.nearbyshare;
+
+option java_multiple_files = true;
+
+message HelloRequest {
+  int32 file_count = 1;
+  int64 total_bytes = 2;
+  repeated string fingerprints = 3;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package com.example.nearbyshare;
+
+option java_multiple_files = true;
+
+enum FileType {
+  UNKNOWN = 0;
+  DOCUMENT = 1;
+  IMAGE = 2;
+  VIDEO = 3;
+}
+
+message FileHeader {
+  FileType type = 1;
+  int64 size = 2;
+  string name = 3;
+  string fingerprint = 4;
+  int64 total_bytes = 5;
+}

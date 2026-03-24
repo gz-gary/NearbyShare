@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 存储权限 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- WiFi Direct 所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- Android 13+ 使用 NEARBY_WIFI_DEVICES 权限替代位置权限 -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation" />
+    <!-- 为了兼容 Android 12 及更早版本，需要位置权限用于WiFi Direct设备发现 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- 蓝牙低功耗扫描和广播所需权限 -->
+    <!-- Android 12 及以上版本 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!-- Android 11 及以下版本 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!-- WiFi Direct 硬件功能声明 -->
+    <uses-feature android:name="android.hardware.wifi.direct" android:required="true" />
+    <!-- 蓝牙硬件功能声明 -->
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NearbyShare">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/Theme.NearbyShare">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ScanActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:label="选择发送目标"
+            android:theme="@style/Theme.NearbyShare" />
+        <activity
+            android:name=".AdvertiseActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:label="等待接收"
+            android:theme="@style/Theme.NearbyShare" />
+        <activity
+            android:name=".SendActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:label="发送"
+            android:theme="@style/Theme.NearbyShare" />
+        <activity
+            android:name=".ReceiveActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:label=" 接收"
+            android:theme="@style/Theme.NearbyShare" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:label="设置"
+            android:theme="@style/Theme.NearbyShare" />
+    </application>
+
+</manifest>

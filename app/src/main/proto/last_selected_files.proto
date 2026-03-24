@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package com.example.nearbyshare;
+
+option java_multiple_files = true;
+
+message LastSelectedFiles {
+  repeated string uris = 1;
+}

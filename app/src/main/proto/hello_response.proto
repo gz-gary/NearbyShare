@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.example.nearbyshare;
+
+option java_multiple_files = true;
+
+import "file_cache.proto";
+
+message HelloResponse {
+  map<string, FileCacheLine> file_cache_map = 1;
+}
